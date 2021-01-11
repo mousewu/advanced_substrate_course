@@ -46,7 +46,7 @@ decl_event!(
 
 		ClaimCreated(AccountId, Vec<u8>),
 		ClaimRevoked(AccountId, Vec<u8>),
-		ClaimTransfered(AccountId, Vec<u8>),
+		ClaimTransferred(AccountId, Vec<u8>),
 	}
 );
 
@@ -89,7 +89,7 @@ decl_module! {
 		#[weight = 0]
 		pub fn revoke_claim(origin, claim: Vec<u8>) -> dispatch::DispatchResult{
 			let sender = ensure_signed(origin)?;
-			ensure!(!Proofs::<T>::contains_key(&claim), Error::<T>::ClaimNotExist);
+			ensure!(Proofs::<T>::contains_key(&claim), Error::<T>::ClaimNotExist);
 			let (owner, _block_number) = Proofs::<T>::get(&claim);
 			ensure!(owner == sender, Error::<T>::NotClaimOwner);
 			Proofs::<T>::remove(&claim);
