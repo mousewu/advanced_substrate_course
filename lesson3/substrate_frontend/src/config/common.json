@@ -1,0 +1,9 @@
+{
+  "APP_NAME": "substrate-front-end-tutorial",
+  "DEVELOPMENT_KEYRING": true,
+  "RPC": {},
+  "CUSTOM_TYPES":{
+    "Kitty": "([u8; 16])",
+    "KittyIndex": "u32"
+  }
+}
